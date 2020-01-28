@@ -21,9 +21,9 @@
             <div class="box-header with-border">
                 <h3 class="box-title">Empresas</h3>
             </div>
-           <div id="empresas-tabela"></div>
+           
           </div>
-
+          <div id="empresas-tabela"></div>
 
         <!-- /.col -->
       </div>
@@ -33,8 +33,7 @@
 ?>
    <script>
         var MOUNTAINS = [
-];	
-[
+          
     {
         "ID": "11",
         "BRANCHID": "1",
@@ -84,8 +83,7 @@
         "URL_LOGO": "https://images.thenorthface.com/is/image/TheNorthFaceBrand/TNF-logo-google-1200x1200",
         "PLATAFORMA": "VTEX"
     }
-];
-
+];	
 
 function buildTable(tabela) {
     var table = document.createElement("table");
