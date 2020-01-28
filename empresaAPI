@@ -1,0 +1,57 @@
+<?php
+
+    session_start();
+
+    header('Content-Type: application-json;');
+
+ 
+
+    require_once("../Model/Conexao.php");
+
+ 
+
+    if (isset($_REQUEST["branchid"])){
+
+        $sql = "SELECT E.ID,E.BRANCHID,E.REDE,E.CODIGO_EMPRESA,E.EMPRESA,E.CNPJ,E.CODIGO_ESTOQUE,E.CODIGO_SALDO,E.CODIGO_CLIENTE,E.TAB_PRECO_DE ".
+
+        ",E.TAB_PRECO_POR,E.DOCA,E.CFOP,E.EMPRESA_MATRIZ,E.ACCOUNT_NAME,E.SELLER,E.CONDICAO_COMERCIAL,E.EMAIL,E.CODIGO_REPRESENTANTE ".
+
+        ",E.ENVIA_VAREJO_INTERNET,E.TOKEN,E.CUSTOM1,E.CUSTOM2,E.CUSTOM3,E.CUSTOM4,E.CUSTOM5,E.DATA_ALTERACAO,E.STATUS ".
+
+        ",D.RazaoSocial,D.IE,D.IM,D.CodigoGerente,D.CodigoCaixa,D.CodigoVendedor,D.Endereco,D.Bairro,D.Cep,D.Cidade,D.UF,D.Telefone ".
+
+        ",D.Obs,D.AppUser,D.AppPassword,D.AppToken, D.ENVIA_NOTIFICACAO, D.URL_LOGO, D.PLATAFORMA ".
+
+        "FROM EMPRESAS E LEFT JOIN EMPRESAS_DETALHES D ON E.BRANCHID=D.BranchId WHERE E.BRANCHID={$_REQUEST["branchid"]}";
+
+    }
+
+    else{
+
+        $sql = "SELECT E.ID,E.BRANCHID,E.REDE,E.CODIGO_EMPRESA,E.EMPRESA,E.CNPJ,E.CODIGO_ESTOQUE,E.CODIGO_SALDO,E.CODIGO_CLIENTE,E.TAB_PRECO_DE ".
+
+            ",E.TAB_PRECO_POR,E.DOCA,E.CFOP,E.EMPRESA_MATRIZ,E.ACCOUNT_NAME,E.SELLER,E.CONDICAO_COMERCIAL,E.EMAIL,E.CODIGO_REPRESENTANTE ".
+
+            ",E.ENVIA_VAREJO_INTERNET,E.TOKEN,E.CUSTOM1,E.CUSTOM2,E.CUSTOM3,E.CUSTOM4,E.CUSTOM5,E.DATA_ALTERACAO,E.STATUS ".
+
+            ",D.RazaoSocial,D.IE,D.IM,D.CodigoGerente,D.CodigoCaixa,D.CodigoVendedor,D.Endereco,D.Bairro,D.Cep,D.Cidade,D.UF,D.Telefone ".
+
+            ",D.Obs,D.AppUser,D.AppPassword,D.AppToken, D.ENVIA_NOTIFICACAO, D.URL_LOGO, D.PLATAFORMA ".
+
+        "FROM EMPRESAS E LEFT JOIN EMPRESAS_DETALHES D ON E.BRANCHID=D.BranchId ORDER BY STATUS DESC";
+
+    }
+
+ 
+
+    $empresas = ExecuteConnectionQuery($sql);
+
+ 
+
+    $json = json_encode($empresas);
+
+    
+
+    echo $json;
+
+?>
