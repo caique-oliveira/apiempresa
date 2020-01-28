@@ -14,7 +14,30 @@
 
 ?>
 
-
+<style>
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+</style>
 <div class="row">
     <div class="col-12">
         <div class="box b-3 border-primary">
@@ -23,7 +46,7 @@
             </div>
            
           </div>
-          <div id="empresas-tabela"></div>
+          <div id="content"></div>
 
         <!-- /.col -->
       </div>
@@ -85,7 +108,7 @@
     }
 ];	
 
-function buildTable(tabela) {
+function buildTable(data) {
     var table = document.createElement("table");
     table.className="gridtable";
     var thead = document.createElement("thead");
@@ -111,6 +134,6 @@ function buildTable(tabela) {
     return table;
 }
 window.onload=function() {
-  document.getElementById("empresas-tabela").appendChild(buildTable(MOUNTAINS));
+  document.getElementById("content").appendChild(buildTable(MOUNTAINS));
 }
      </script>
