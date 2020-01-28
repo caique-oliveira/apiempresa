@@ -1,0 +1,30 @@
+        $(document).ready(function(){
+
+$.ajax({
+type: "GET",
+url: "/api/empresasApi.php",
+dataType: 'json',
+success: function(tabela){
+    //AQUI A MUDANÇA QUE FIZ NO SEU CODIGO...
+    alert("Nome: " + data.nome);
+}, //END success
+error: function(e){
+    alert("Erro: " + e);
+} // END error
+
+}); // END $.ajax
+
+}); // END Function, END ready
+
+function popularTabela(retorno, elemento) {
+ 
+ let dados = '';
+ 
+ for (let i in retorno){
+   
+   dados += `<tr><td>${tabela[i]["id"]}</td><td>${tabela[i]["name"]}</td></tr>`;
+   
+ }
+   
+  $(elemento).html (dados);
+}
